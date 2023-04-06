@@ -12,28 +12,23 @@ $ (function() {
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
 
-  //call the description text area
-  var descriptionInput = $('.description').text()
-  var saveButtonEl = $('.saveBtn')
 
-  localStorage.setItem('savedItem', JSON.stringify(descriptionInput))
-
-  //function to parse the saved item from storage and set it to the page
-  function renderSavedItems() {
-    var savedItems = JSON.parse(localStorage.getItem('savedItem'));
-    $('.description').innerHTML = savedItems
-    if (savedItems !== null) {
-      return;
-    }
-  };
+  var userInput = document.getElementsByClassName("time-block");
   
   //create an event to listen for click on save button
+  $('.saveBtn').on("click", addUserInputToStorage);
+
   //create string from userInput object to put into local storage
- saveButtonEl.on("click", function() {
-    renderSavedItems();
-});
+  function addUserInputToStorage() {
+    const value = JSON.stringify(userInput.value);
+    console.log(value)
+    localStorage.setItem("description", value);
+  }
+  //get the saved item from storage and set it to the page
+  var savedItem = localStorage.getItem("description");
+  
  
-  //
+
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
   // attribute of each time-block be used to conditionally add or remove the
