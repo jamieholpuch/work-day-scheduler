@@ -13,21 +13,41 @@ $ (function() {
   // useful when saving the description in local storage?
 
 
-  var userInput = document.getElementsByClassName("time-block");
-  
-  //create an event to listen for click on save button
-  $('.saveBtn').on("click", addUserInputToStorage);
+  //var userInput = document.getElementsByClassName("description");
+  //console.log(userInput.val);
+
 
   //create string from userInput object to put into local storage
   function addUserInputToStorage() {
-    const value = JSON.stringify(userInput.value);
-    console.log(value)
-    localStorage.setItem("description", value);
+    var userInput = $('.description').val()
+    var timeEl = $(this).parent().attr('id');
+    console.log(timeEl)
+    console.log(userInput);
+    localStorage.setItem(timeEl, userInput)
   }
   //get the saved item from storage and set it to the page
-  var savedItem = localStorage.getItem("description");
+  var savedItem09 = localStorage.getItem("09");
+  var savedItem10 = localStorage.getItem("10");
+  var savedItem11 = localStorage.getItem("11");
+  var savedItem12 = localStorage.getItem("12");
+  var savedItem13 = localStorage.getItem("13");
+  var savedItem14 = localStorage.getItem("14");
+  var savedItem15 = localStorage.getItem("15");
+  var savedItem16 = localStorage.getItem("16");
+  var savedItem17 = localStorage.getItem("17");
   
- 
+
+  $('#09').children(".description").text(savedItem09)
+  $('#10').children(".description").text(savedItem10)
+  $('#11').children(".description").text(savedItem11)
+  $('#12').children(".description").text(savedItem12)
+  $('#13').children(".description").text(savedItem13)
+  $('#14').children(".description").text(savedItem14)
+  $('#15').children(".description").text(savedItem15)
+  $('#16').children(".description").text(savedItem16)
+  $('#17').children(".description").text(savedItem17)
+  
+
 
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
@@ -53,7 +73,10 @@ $ (function() {
     }
   });
 
-
+    // set the current date
     var currentDay = dayjs().format('dddd, MMMM D, YYYY');
     $('#currentDay').text(currentDay);
+
+     //create an event to listen for click on save button
+  $('.saveBtn').on("click", addUserInputToStorage);
 });
