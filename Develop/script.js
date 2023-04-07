@@ -62,6 +62,7 @@ $ (function() {
 
   let timeBlocks = $(".time-block");
   var currentTime = dayjs().format('H');
+  currentTime = 12
   timeBlocks.each(function (div) {
     let timeBlockValue = $(this).attr('id')
     if (currentTime > timeBlockValue) {
